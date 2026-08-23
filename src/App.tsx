@@ -58,7 +58,7 @@ function App() {
 
           <figure className="hero-shot">
             <img
-              src="./app-screenshot.jpg"
+              src="./app-screenshot.webp"
               alt="Окно MacTranscribe: список записей слева, транскрипт со спикерами и таймкодами, плеер с волной и кнопками «Экспорт» и «Диаризовать»"
               loading="eager"
             />
