@@ -1,17 +1,10 @@
 import { downloadUrl, release } from "./site-content.mjs";
 
-const demoLines = [
-  { speaker: 1, time: "0:04", text: "Смотри, насколько я знаю, фронт делает Паша." },
-  { speaker: 2, time: "0:09", text: "Ну вроде как да. Ты можешь с ним обсудить?" },
-  { speaker: 1, time: "0:14", text: "Давай после дейлика поговорим про контракт." },
-  { speaker: 2, time: "0:19", text: "Окей. Тогда всё в одну ТРН формируем." },
-];
-
 const privacyItems = [
   "Распознавание и диаризация работают на вашем Mac — через Neural Engine.",
   "Звук и транскрипты не отправляются никуда: без облака, аккаунтов и аналитики.",
   "Записи лежат обычными файлами в Application Support — забирайте и удаляйте когда угодно.",
-  "Код открыт: можно проверить каждое из этих утверждений.",
+  "Работает без сети: выключите Wi-Fi и убедитесь сами.",
 ];
 
 const waveBars = Array.from({ length: 28 }, (_, i) => i);
@@ -43,7 +36,7 @@ function App() {
               <img src="./mac-transcribe-icon.png" alt="" width="46" height="46" />
               <div>
                 <strong>MacTranscribe</strong>
-                <span>Бесплатно · открытый код</span>
+                <span>Бесплатно для macOS</span>
               </div>
             </div>
             <p className="eyebrow">Встречи, звонки, интервью</p>
@@ -63,41 +56,13 @@ function App() {
             </p>
           </div>
 
-          <div className="live-demo" aria-label="Демонстрация: идёт запись, транскрипт появляется в реальном времени">
-            <div className="demo-titlebar">
-              <span className="traffic" aria-hidden="true"><i /><i /><i /></span>
-              <span className="rec-chip">
-                <span className="rec-dot" aria-hidden="true" />
-                REC <span className="rec-time">12:47</span>
-              </span>
-            </div>
-            <div className="demo-wave" aria-hidden="true">
-              {waveBars.map((i) => (
-                <i key={i} style={{ animationDelay: `${(i % 7) * 0.13}s` }} />
-              ))}
-            </div>
-            <div className="demo-transcript">
-              {demoLines.map((line, index) => (
-                <div
-                  key={line.time}
-                  className={`demo-line demo-line--s${line.speaker}`}
-                  style={{ animationDelay: `${0.6 + index * 1.1}s` }}
-                >
-                  <span className="demo-meta">
-                    <b>Спикер {line.speaker}</b>
-                    <time>{line.time}</time>
-                  </span>
-                  <p>{line.text}</p>
-                </div>
-              ))}
-              <div className="demo-line demo-line--partial" style={{ animationDelay: "5s" }}>
-                <span className="demo-meta"><b>Спикер 1</b><time>0:23</time></span>
-                <p>
-                  Хорошо, тогда я возьму задачу<span className="caret" aria-hidden="true" />
-                </p>
-              </div>
-            </div>
-          </div>
+          <figure className="hero-shot">
+            <img
+              src="./app-screenshot.jpg"
+              alt="Окно MacTranscribe: список записей слева, транскрипт со спикерами и таймкодами, плеер с волной и кнопками «Экспорт» и «Диаризовать»"
+              loading="eager"
+            />
+          </figure>
         </section>
 
         <section className="features section-shell" id="features" aria-labelledby="features-title">
@@ -244,7 +209,6 @@ function App() {
         </a>
         <p>Сборка {release.version}</p>
         <nav aria-label="Ссылки проекта">
-          <a href="https://github.com/art-ps/mac-transcribe" target="_blank" rel="noreferrer">GitHub</a>
           <a href="https://github.com/art-ps/mac-transcribe/releases" target="_blank" rel="noreferrer">Все версии</a>
         </nav>
       </footer>
