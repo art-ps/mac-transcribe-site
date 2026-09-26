@@ -14,4 +14,8 @@ export const sidebar = [
       { text: "Работа с записями", link: "/recordings" },
     ],
   },
+  {
+    text: "Справочник",
+    items: [{ text: "Настройки", link: "/settings" }],
+  },
 ];
