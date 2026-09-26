@@ -9,6 +9,9 @@ export const sidebar = [
   },
   {
     text: "Как это работает",
-    items: [{ text: "Запись и транскрипция", link: "/transcription" }],
+    items: [
+      { text: "Запись и транскрипция", link: "/transcription" },
+      { text: "Работа с записями", link: "/recordings" },
+    ],
   },
 ];
