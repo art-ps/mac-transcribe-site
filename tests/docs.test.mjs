@@ -44,6 +44,13 @@ test("links to the landing page use its full URL", () => {
   }
 });
 
+// file:line из кода приложения нужны в отчёте о задаче, а не читателю страницы.
+test("docs never cite app source files", () => {
+  for (const page of pages) {
+    assert.doesNotMatch(read(page), /Sources\/|\.swift\b/, `${page}: app source citation leaked into the page`);
+  }
+});
+
 // defer-скрипты выполняются по порядку и задерживают всё после себя (см. коммит d38df8f).
 test("analytics in docs does not block rendering", () => {
   const config = readFileSync(new URL(".vitepress/config.mts", docsDir), "utf8");
