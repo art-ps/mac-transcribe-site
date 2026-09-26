@@ -32,7 +32,7 @@
 
 - «В вольт: N» — экспортирует по очереди все выбранные записи, у которых уже есть транскрипт (`Sources/SidebarView.swift:138-145`; `Sources/MacTranscribeApp.swift:911-926`);
 - «Транскрибировать: N» — ставит подходящие записи в очередь проходов (`Sources/SidebarView.swift:147-155`; `Sources/MacTranscribeApp.swift:939-950`);
-- «Удалить: N» — удаляет выбранные записи, кроме тех, что сейчас пишутся или транскрибируются (`Sources/SidebarView.swift:170-177`; `Sources/MacTranscribeApp.swift:952-965`).
+- «Удалить: N» — удаляет выбранные записи, кроме тех, что сейчас пишутся, транскрибируются или ждут своей очереди на транскрибацию (`Sources/SidebarView.swift:170-177`; `Sources/MacTranscribeApp.swift:952-965`).
 
 ## Экспорт
 
