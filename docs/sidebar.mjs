@@ -2,6 +2,9 @@
 export const sidebar = [
   {
     text: "Начало",
-    items: [{ text: "Обзор", link: "/" }],
+    items: [
+      { text: "Обзор", link: "/" },
+      { text: "Установка", link: "/install" },
+    ],
   },
 ];
