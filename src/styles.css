@@ -448,7 +448,6 @@ a { color: inherit; }
   font-size: 0.9rem;
 }
 
-.site-footer p { margin: 0; font-family: var(--font-mono); font-size: 0.78rem; }
 .site-footer nav { margin-left: auto; display: flex; gap: 18px; }
 .site-footer nav a { color: var(--ink-soft); }
 .site-footer nav a:hover { color: var(--ink); }

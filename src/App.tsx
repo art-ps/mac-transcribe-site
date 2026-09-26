@@ -1,8 +1,8 @@
-import { downloadUrl, release } from "./site-content.mjs";
+import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
 
 const privacyItems = [
   "Распознавание и диаризация работают на вашем Mac — через Neural Engine.",
-  "Звук и транскрипты не отправляются никуда: без облака, аккаунтов и аналитики.",
+  "Звук и транскрипты не уходят с Mac. Исключение — суммаризация: по вашей кнопке текст уходит в Claude через ваш claude CLI.",
   "Записи лежат обычными файлами в Application Support — забирайте и удаляйте когда угодно.",
   "Работает без сети: выключите Wi-Fi и убедитесь сами.",
 ];
@@ -153,14 +153,14 @@ function App() {
           <div className="section-heading install-heading">
             <p className="eyebrow">Три шага</p>
             <h2 id="install-title">Установите — и жмите «Запись»</h2>
-            <p>Сборка подписана developer-сертификатом, но пока не нотарифицирована Apple.</p>
+            <p>Приложение подписано и нотаризовано Apple — macOS откроет его без предупреждений.</p>
           </div>
           <ol className="install-steps">
             <li>
               <span className="step-number">01</span>
               <div>
                 <h3>Перенесите приложение</h3>
-                <p>Откройте DMG и перетащите MacTranscribe в папку Applications. При первом запуске — правой кнопкой → Открыть.</p>
+                <p>Откройте DMG и перетащите MacTranscribe в папку Applications.</p>
               </div>
             </li>
             <li>
@@ -207,9 +207,8 @@ function App() {
           <img src="./mac-transcribe-icon.png" alt="" width="34" height="34" />
           <span>MacTranscribe</span>
         </a>
-        <p>Сборка {release.version}</p>
         <nav aria-label="Ссылки проекта">
-          <a href="https://github.com/art-ps/mac-transcribe/releases" target="_blank" rel="noreferrer">Все версии</a>
+          <a href={releasesUrl} target="_blank" rel="noreferrer">Все версии</a>
         </nav>
       </footer>
     </>
