@@ -16,6 +16,10 @@ export const sidebar = [
   },
   {
     text: "Справочник",
-    items: [{ text: "Настройки", link: "/settings" }],
+    items: [
+      { text: "Настройки", link: "/settings" },
+      { text: "Приватность", link: "/privacy" },
+      { text: "Решение проблем", link: "/troubleshooting" },
+    ],
   },
 ];
