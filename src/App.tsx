@@ -2,7 +2,7 @@ import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
 
 const privacyItems = [
   "Распознавание и диаризация работают на вашем Mac — через Neural Engine.",
-  "Звук и транскрипты не уходят с Mac. Исключение — суммаризация: по вашей кнопке текст уходит в Claude через ваш claude CLI.",
+  "Звук и транскрипты не уходят с Mac: без облака и аккаунтов.",
   "Записи лежат обычными файлами в Application Support — забирайте и удаляйте когда угодно.",
   "Работает без сети: выключите Wi-Fi и убедитесь сами.",
 ];
@@ -42,8 +42,8 @@ function App() {
             <p className="eyebrow">Встречи, звонки, интервью</p>
             <h1 id="hero-title">Каждый разговор — в текст. Не покидая ваш Mac.</h1>
             <p className="hero-description">
-              MacTranscribe пишет микрофон и системный звук одновременно, показывает текст по
-              ходу разговора и раскладывает готовый транскрипт по спикерам. Модель работает
+              MacTranscribe пишет микрофон и системный звук одновременно, а после записи
+              превращает разговор в текст — ваши реплики отдельно от собеседников. Модель работает
               локально на Neural Engine — интернет нужен один раз, чтобы её скачать.
             </p>
             <a className="download-button" href={downloadUrl}>
@@ -59,7 +59,7 @@ function App() {
           <figure className="hero-shot">
             <img
               src="./app-screenshot.webp"
-              alt="Окно MacTranscribe: список записей слева, транскрипт со спикерами и таймкодами, плеер с волной и кнопками «Экспорт» и «Диаризовать»"
+              alt="Окно MacTranscribe: список записей слева, транскрипт со спикерами и таймкодами, плеер с волной и кнопками «Экспорт» и «Перетранскрибировать»"
               loading="eager"
             />
           </figure>
@@ -84,10 +84,11 @@ function App() {
             <article className="feature-card">
               <span className="feature-number" aria-hidden="true">02</span>
               <div className="feature-icon" aria-hidden="true">···|||</div>
-              <h3>Текст по ходу разговора</h3>
+              <h3>Текст сразу после записи</h3>
               <p>
-                Фразы появляются через секунду после произнесения. Whisper large-v3-turbo
-                на Neural Engine — без интернета.
+                Остановили запись — локальный проход превращает её в текст. Несколько записей
+                можно поставить в очередь, готовые пропускаются. Нужен текст прямо во время
+                звонка — включите live в настройках.
               </p>
             </article>
             <article className="feature-card">
@@ -95,8 +96,9 @@ function App() {
               <div className="feature-icon" aria-hidden="true">S1 / S2</div>
               <h3>Кто что сказал</h3>
               <p>
-                После записи офлайн-проход уточняет транскрипт и раскладывает реплики
-                по спикерам — диаризация тоже локальная.
+                Ваш микрофон и звук собеседников пишутся раздельно — реплики сразу подписаны.
+                Нужно различить каждого участника — перетранскрибируйте с разделением
+                по спикерам, диаризация тоже локальная.
               </p>
             </article>
             <article className="feature-card">
@@ -105,7 +107,25 @@ function App() {
               <h3>Плеер, связанный с текстом</h3>
               <p>
                 Клик по фразе — перемотка к этому месту. При воспроизведении текущая реплика
-                подсвечивается. Экспорт в текст — в один клик.
+                подсвечивается. Экспорт в TXT, Markdown и SRT или сразу в вольт Obsidian.
+              </p>
+            </article>
+            <article className="feature-card">
+              <span className="feature-number" aria-hidden="true">05</span>
+              <div className="feature-icon" aria-hidden="true">▶ ↻</div>
+              <h3>Все разговоры остаются у вас</h3>
+              <p>
+                Каждая запись хранится на Mac в компактном Opus. Переслушайте её в любой момент
+                или перетранскрибируйте заново — другой моделью или с разделением по спикерам.
+              </p>
+            </article>
+            <article className="feature-card">
+              <span className="feature-number" aria-hidden="true">06</span>
+              <div className="feature-icon" aria-hidden="true">⇣ ♪</div>
+              <h3>Уже записанное — тоже в текст</h3>
+              <p>
+                Перетащите в окно файл с диктофона, запись Zoom или любое другое аудио и видео —
+                MacTranscribe превратит его в текст.
               </p>
             </article>
           </div>
@@ -117,13 +137,14 @@ function App() {
             <h2 id="engine-title">Модель уровня облачных сервисов — на вашем железе</h2>
             <p>
               Распознавание — <strong>Whisper large-v3-turbo</strong> (CoreML, WhisperKit),
-              диаризация — <strong>pyannote</strong>. Русский по умолчанию, ещё 13 языков и
-              автоопределение — в настройках.
+              для русского можно выбрать <strong>GigaAM v3</strong>. Диаризация —{" "}
+              <strong>pyannote</strong>. Русский по умолчанию, ещё 12 языков и автоопределение —
+              в настройках.
             </p>
           </div>
           <ul className="engine-stats" aria-label="Ключевые характеристики">
-            <li><strong>626 МБ</strong><small>модель, скачивается один раз</small></li>
-            <li><strong>~1 с</strong><small>от фразы до текста на экране</small></li>
+            <li><strong>626 МБ</strong><small>модель Turbo, скачивается один раз</small></li>
+            <li><strong>13 языков</strong><small>и автоопределение</small></li>
             <li><strong>Opus</strong><small>компактный архив записей</small></li>
           </ul>
         </section>
@@ -174,7 +195,7 @@ function App() {
               <span className="step-number">03</span>
               <div>
                 <h3>Дождитесь модель</h3>
-                <p>При первом запуске приложение скачает модель распознавания (626 МБ). Дальше интернет не нужен.</p>
+                <p>При первом запуске приложение скачает модель распознавания (483–626 МБ, зависит от памяти Mac). Дальше интернет не нужен.</p>
               </div>
             </li>
           </ol>

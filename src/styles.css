@@ -225,7 +225,8 @@ a { color: inherit; }
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* 300px: на ширине контейнера помещается ровно 3 колонки — 6 карточек ложатся 3×2 */
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 18px;
 }
 
