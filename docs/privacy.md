@@ -11,7 +11,7 @@
 | Загрузка модели распознавания речи (Whisper: Small, Turbo или Large) | huggingface.co | при первом запуске и при скачивании модели на вкладке «Модели» в настройках | нет — без модели движок Whisper не работает |
 | Загрузка моделей диаризации (сегментация и голосовой эмбеддинг) | github.com (`k2-fsa/sherpa-onnx`) | при первом запуске, если модели ещё не скачаны | нет — это обязательные модели |
 | Загрузка модели GigaAM | github.com (`art-ps/mac-transcribe-releases`) | по кнопке «Скачать» для модели GigaAM на вкладке «Модели» | да — по умолчанию модель не скачивается, загрузка начинается только по явному нажатию |
-| Проверка обновлений | api.github.com (`art-ps/mac-transcribe-releases`) | автоматически раз в сутки, и сразу — по кнопке «Проверить сейчас» | да — тумблером «Проверять обновления автоматически» на вкладке «About» |
+| Проверка обновлений | api.github.com (`art-ps/mac-transcribe-releases`) | автоматически раз в сутки (включено по умолчанию), и сразу — по кнопке «Проверить сейчас» | да — тумблером «Проверять обновления автоматически» на вкладке «About» |
 | Переход на страницу или файл новой версии | github.com (`art-ps/mac-transcribe-releases`) | по клику на кнопку скачивания найденного обновления | это переход по ссылке в браузере, не отдельный фоновый запрос |
 | Ссылка vibecoded.ru | vibecoded.ru | только по клику на ссылку на вкладке «About» или в тулбаре | это обычная ссылка, а не запрос от приложения |
 
@@ -28,20 +28,8 @@
 | Модель GigaAM | `~/Library/Application Support/mac-transcribe/gigaam` |
 | Модели диаризации (сегментация и голосовой эмбеддинг) | `~/Library/Application Support/sherpa` |
 | Настройки приложения | `UserDefaults`, бандл `in.pisarev.mac-transcribe` |
+| Журнал событий (для диагностики) | `~/Library/Application Support/mac-transcribe/perf.log` — содержит имена импортированных файлов и файлов, экспортированных в вольт (с названиями записей) |
 
 ## Как удалить всё
 
-Тот же порядок, что на странице [«Установка» → «Удаление»](/install#удаление):
-
-1. Выйдите из MacTranscribe.
-2. Удалите `MacTranscribe.app` из папки «Программы».
-3. Удалите оставшиеся на диске данные:
-
-```bash
-defaults delete in.pisarev.mac-transcribe
-
-rm -rf ~/Library/Application\ Support/mac-transcribe/conversations
-rm -rf ~/Library/Application\ Support/mac-transcribe/whisperkit
-rm -rf ~/Library/Application\ Support/mac-transcribe/gigaam
-rm -rf ~/Library/Application\ Support/sherpa
-```
+Команды — на странице [«Установка» → «Удаление»](/install#удаление): они стирают записи, транскрипты, скачанные модели, журнал событий и настройки приложения, а также сбрасывают выданные разрешения.

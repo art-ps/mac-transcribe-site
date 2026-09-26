@@ -24,13 +24,15 @@ GigaAM в этот набор не входит — это отдельный д
 
 1. Выйдите из MacTranscribe.
 2. Удалите `MacTranscribe.app` из папки «Программы».
-3. Удалите оставшиеся на диске данные:
+3. Удалите оставшиеся на диске данные и выданные разрешения:
 
 ```bash
 defaults delete in.pisarev.mac-transcribe
 
-rm -rf ~/Library/Application\ Support/mac-transcribe/conversations
-rm -rf ~/Library/Application\ Support/mac-transcribe/whisperkit
-rm -rf ~/Library/Application\ Support/mac-transcribe/gigaam
+rm -rf ~/Library/Application\ Support/mac-transcribe
 rm -rf ~/Library/Application\ Support/sherpa
+
+# сбросить разрешения на микрофон и запись экрана
+tccutil reset Microphone in.pisarev.mac-transcribe
+tccutil reset ScreenCapture in.pisarev.mac-transcribe
 ```

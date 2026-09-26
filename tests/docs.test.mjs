@@ -26,12 +26,13 @@ test("every sidebar item points at an existing page", () => {
 // Владелец убрал это с сайта: суммаризация уходит из приложения, нотаризацию не рекламируем,
 // а «Opus» без слова «кодек» путают с моделью Claude Opus.
 test("docs never mention what the site dropped", () => {
-  for (const page of pages) {
-    const text = read(page);
-    assert.doesNotMatch(text, /суммариз|нотариз|claude/iu, page);
+  const configText = readFileSync(new URL(".vitepress/config.mts", docsDir), "utf8");
+  const texts = [...pages.map((page) => [page, read(page)]), ["config.mts", configText]];
+  for (const [label, text] of texts) {
+    assert.doesNotMatch(text, /суммариз|нотариз|claude/iu, label);
     for (const match of text.matchAll(/Opus/g)) {
       const around = text.slice(Math.max(0, match.index - 40), match.index + 44);
-      assert.match(around, /кодек/iu, `${page}: "Opus" without "кодек": …${around}…`);
+      assert.match(around, /кодек/iu, `${label}: "Opus" without "кодек": …${around}…`);
     }
   }
 });
@@ -54,9 +55,13 @@ test("docs never cite app source files", () => {
 // defer-скрипты выполняются по порядку и задерживают всё после себя (см. коммит d38df8f).
 test("analytics in docs does not block rendering", () => {
   const config = readFileSync(new URL(".vitepress/config.mts", docsDir), "utf8");
-  assert.match(config, /stats\.pisarev\.me\/script\.js/);
-  assert.match(config, /async: ""/);
-  assert.doesNotMatch(config, /defer: ""/);
+  const scriptEntry = config.match(/\[\s*"script",\s*\{[^}]*\},?\s*\]/s)?.[0];
+  assert.ok(scriptEntry, "analytics <script> head entry not found in config.mts");
+  assert.match(scriptEntry, /stats\.pisarev\.me\/script\.js/);
+  assert.match(scriptEntry, /\basync\s*:/);
+  // Comments strip out first: the comment explaining "not defer" itself contains "defer:".
+  const codeOnly = config.replace(/\/\/.*$/gm, "");
+  assert.doesNotMatch(codeOnly, /\bdefer\s*:/, "config.mts must not declare a defer key anywhere");
 });
 
 test("landing links to the docs from the header and the footer", () => {
