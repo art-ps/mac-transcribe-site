@@ -7,4 +7,8 @@ export const sidebar = [
       { text: "Установка", link: "/install" },
     ],
   },
+  {
+    text: "Как это работает",
+    items: [{ text: "Запись и транскрипция", link: "/transcription" }],
+  },
 ];
