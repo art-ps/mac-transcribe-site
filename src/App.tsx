@@ -41,7 +41,7 @@ function App() {
               </div>
             </div>
             <p className="eyebrow">Встречи, звонки, интервью</p>
-            <h1 id="hero-title">Каждый разговор — в текст. Не покидая ваш Mac.</h1>
+            <h1 id="hero-title">Следующий созвон уже можно не конспектировать</h1>
             <p className="hero-description">
               MacTranscribe пишет микрофон и системный звук одновременно и превращает записи
               в текст — ваши реплики отдельно от собеседников. Модель работает
@@ -214,8 +214,8 @@ function App() {
           </div>
           <div className="final-cta-copy">
             <p className="eyebrow">Готово к встречам</p>
-            <h2 id="download-title">Следующий созвон уже можно не конспектировать</h2>
-            <p>Бесплатно. Без подписки. Звук и текст остаются на Mac.</p>
+            <h2 id="download-title">Транскрибация — прямо на вашем Mac, локальными ИИ-моделями</h2>
+            <p>Бесплатно. Без подписки. Звук и текст никуда не отправляются.</p>
             <a className="download-button download-button--invert" href={downloadUrl}>
               Скачать MacTranscribe
               <span aria-hidden="true">↓</span>
