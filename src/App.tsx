@@ -138,14 +138,16 @@ function App() {
             <p className="eyebrow">Под капотом</p>
             <h2 id="engine-title">Модель уровня облачных сервисов — на вашем железе</h2>
             <p>
-              Распознавание — <strong>Whisper large-v3-turbo</strong> (CoreML, WhisperKit),
-              для русского можно выбрать <strong>GigaAM v3</strong>. Диаризация —{" "}
+              Распознавание — <strong>Whisper</strong> (CoreML, WhisperKit), для русского можно
+              выбрать <strong>GigaAM v3</strong> — примерно в 5 раз быстрее Whisper и точнее на
+              живой речи. Диаризация —{" "}
               <strong>pyannote</strong>. Русский по умолчанию, ещё 12 языков и автоопределение —
               в настройках.
             </p>
           </div>
           <ul className="engine-stats" aria-label="Ключевые характеристики">
-            <li><strong>626 МБ</strong><small>модель Turbo, скачивается один раз</small></li>
+            <li><strong>до 947 МБ</strong><small>модель Whisper, скачивается один раз</small></li>
+            <li><strong>326 МБ</strong><small>GigaAM v3 для русского, по желанию</small></li>
             <li><strong>13 языков</strong><small>и автоопределение</small></li>
             <li><strong>Opus</strong><small>аудиокодек для компактного архива</small></li>
           </ul>
@@ -197,7 +199,7 @@ function App() {
               <span className="step-number">03</span>
               <div>
                 <h3>Дождитесь модель</h3>
-                <p>При первом запуске приложение скачает модель распознавания (483–626 МБ, зависит от памяти Mac). Дальше интернет не нужен.</p>
+                <p>При первом запуске приложение скачает модель распознавания (483–947 МБ, зависит от памяти Mac). Дальше интернет не нужен. Для русского можно отдельно скачать GigaAM v3 (326 МБ) в настройках.</p>
               </div>
             </li>
           </ol>

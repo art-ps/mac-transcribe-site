@@ -443,6 +443,7 @@ a { color: inherit; }
   padding: 28px 24px 44px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);

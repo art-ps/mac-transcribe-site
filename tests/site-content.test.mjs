@@ -21,3 +21,11 @@ test("no link points at the private code repository", () => {
     assert.doesNotMatch(url, /github\.com\/art-ps\/mac-transcribe\//);
   }
 });
+
+// При первом запуске качается модель финального прохода: Large 947 МБ или Small 483 МБ.
+// 626 МБ — Turbo для live, его лендинг уже однажды выдавал за первую загрузку.
+test("landing does not claim the 626 MB Turbo as the first download", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const landing = (await readFile(new URL("../src/App.tsx", import.meta.url), "utf8")) + release.modelLabel;
+  assert.doesNotMatch(landing, /626/);
+});
