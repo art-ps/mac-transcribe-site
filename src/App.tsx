@@ -24,7 +24,7 @@ function App() {
             <a href="#install">Установка</a>
             <a href="./docs/">Документация</a>
           </nav>
-          <a className="header-download" href={downloadUrl}>
+          <a className="header-download" href={downloadUrl} data-umami-event="download" data-umami-event-place="header">
             Скачать
           </a>
         </div>
@@ -47,7 +47,7 @@ function App() {
               в текст — ваши реплики отдельно от собеседников. Модель работает
               локально на Neural Engine — интернет нужен один раз, чтобы её скачать.
             </p>
-            <a className="download-button" href={downloadUrl}>
+            <a className="download-button" href={downloadUrl} data-umami-event="download" data-umami-event-place="hero">
               Скачать MacTranscribe
               <span aria-hidden="true">↓</span>
             </a>
@@ -218,7 +218,7 @@ function App() {
             <p className="eyebrow">Готово к встречам</p>
             <h2 id="download-title">Транскрибация — прямо на вашем Mac, локальными ИИ-моделями</h2>
             <p>Бесплатно. Без подписки. Звук и текст никуда не отправляются.</p>
-            <a className="download-button download-button--invert" href={downloadUrl}>
+            <a className="download-button download-button--invert" href={downloadUrl} data-umami-event="download" data-umami-event-place="final">
               Скачать MacTranscribe
               <span aria-hidden="true">↓</span>
             </a>

@@ -1,6 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import { downloadUrl, releasesUrl, release } from "../src/site-content.mjs";
+
+const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");
 
 test("release metadata describes the shipped DMG", () => {
   assert.equal(release.fileName, "MacTranscribe.dmg");
@@ -20,6 +23,14 @@ test("no link points at the private code repository", () => {
   for (const url of [downloadUrl, releasesUrl]) {
     assert.doesNotMatch(url, /github\.com\/art-ps\/mac-transcribe\//);
   }
+});
+
+test("every download link reports a umami event with its place", () => {
+  const links = app.match(/<a\b[^>]*href=\{downloadUrl\}[^>]*>/g) ?? [];
+  assert.equal(links.length, 3);
+  for (const link of links) assert.match(link, /data-umami-event="download"/);
+  const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
+  assert.deepEqual(places, ["header", "hero", "final"]);
 });
 
 // При первом запуске качается модель финального прохода: Large 947 МБ или Small 483 МБ.
