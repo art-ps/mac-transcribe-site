@@ -28,7 +28,7 @@
 | Модель GigaAM | `~/Library/Application Support/mac-transcribe/gigaam` |
 | Модели диаризации (сегментация и голосовой эмбеддинг) | `~/Library/Application Support/sherpa` |
 | Настройки приложения | `UserDefaults`, бандл `in.pisarev.mac-transcribe` |
-| Журнал событий (для диагностики) | `~/Library/Application Support/mac-transcribe/perf.log` — содержит имена импортированных файлов и файлов, экспортированных в вольт (с названиями записей) |
+| Журнал событий (для диагностики) | `~/Library/Application Support/mac-transcribe/perf.log` — содержит имена импортированных файлов и файлов, экспортированных в хранилище (с названиями записей) |
 
 ## Как удалить всё
 

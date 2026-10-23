@@ -109,7 +109,7 @@ function App() {
               <h3>Плеер, связанный с текстом</h3>
               <p>
                 Клик по фразе — перемотка к этому месту. При воспроизведении текущая реплика
-                подсвечивается. Экспорт в TXT, Markdown и SRT или сразу в вольт Obsidian.
+                подсвечивается. Экспорт в TXT, Markdown и SRT или сразу в хранилище Obsidian.
               </p>
             </article>
             <article className="feature-card">
