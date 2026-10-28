@@ -141,7 +141,8 @@ a { color: inherit; }
 
 .hero-copy { max-width: 46rem; }
 
-.hero-actions {
+.hero-actions,
+.final-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -593,7 +594,6 @@ details > summary { cursor: pointer; font-weight: 600; }
 
 .final-cta-copy { padding: 48px 40px; }
 .final-cta-copy p { color: var(--ink-soft); }
-.final-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
 .final-cta-copy small {
   display: block;
   margin-top: 12px;

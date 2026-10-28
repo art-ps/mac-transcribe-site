@@ -42,14 +42,14 @@ const faq = [
   },
   {
     q: "Что приложение делает само, а что запускаю я?",
-    a: "Приложение записывает звук и расшифровывает его на Mac. Расшифровку запускаете кнопкой «Транскрибировать» (автозапуск выключен по умолчанию), экспорт — кнопкой «В хранилище»: автоматического экспорта нет. Анализ запускаете вы — агентом в папке проекта по промпту из набора.",
+    a: "Приложение записывает звук. Расшифровку запускаете кнопкой «Транскрибировать» (автозапуск после записи можно включить в настройках), экспорт — кнопкой «В хранилище», агента запускаете вы.",
   },
 ];
 
 export function Trust() {
   return (
-    <section className="trust section-shell" id="faq" aria-labelledby="privacy-title">
-      <div id="privacy">
+    <section className="section-shell" id="faq" aria-labelledby="faq-title">
+      <div id="privacy" role="region" aria-labelledby="privacy-title">
         <h2 id="privacy-title">Приватность по этапам</h2>
         <ol className="privacy-stages">
           {stages.map((stage) => (
@@ -60,7 +60,7 @@ export function Trust() {
           ))}
         </ol>
       </div>
-      <h2 className="faq-title">Вопросы</h2>
+      <h2 id="faq-title">Вопросы</h2>
       <div className="faq-list">
         {faq.map((item) => (
           <details key={item.q}>
@@ -70,7 +70,7 @@ export function Trust() {
         ))}
       </div>
       <p className="author">
-        Автор — <a href={authorUrl} target="_blank" rel="noreferrer">Артём Писарев</a>. Ошибки и вопросы —{" "}
+        Автор — Артём Писарев, <a href={authorUrl} target="_blank" rel="noreferrer">vibecoded.ru</a>. Ошибки и вопросы —{" "}
         <a href={contactUrl} target="_blank" rel="noreferrer">issues в репозитории релизов</a>.
       </p>
     </section>
