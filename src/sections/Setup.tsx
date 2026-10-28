@@ -25,7 +25,7 @@ export function Setup() {
               (например, <code>Встречи/</code> или <code>50 Raw/MacTranscribe/</code>).
             </li>
             <li>
-              Положите рядом <code>AGENTS.md</code> и <code>_prompts/</code> из набора (Claude Code
+              Положите рядом <code>AGENTS.md</code>, <code>CLAUDE.md</code> и <code>_prompts/</code> из набора (Claude Code
               читает <code>CLAUDE.md</code> = <code>@AGENTS.md</code>, Codex — <code>AGENTS.md</code>).
             </li>
             <li>Запускайте агента из корня этой папки — остальное как в первом маршруте.</li>

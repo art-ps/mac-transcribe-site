@@ -1,8 +1,10 @@
 import { kitSizeLabel, kitUrl } from "../site-content.mjs";
 
 const tree = `Смена-исследование/
+  README.md
   Контекст продукта.md
   AGENTS.md
+  CLAUDE.md
   _prompts/
   Встречи/
   Исследования/
