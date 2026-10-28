@@ -3,16 +3,10 @@ import { Scenarios } from "./sections/Scenarios";
 import { Example } from "./sections/Example";
 import { Kit } from "./sections/Kit";
 import { Setup } from "./sections/Setup";
-import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
-
-const privacyItems = [
-  "Распознавание и диаризация работают на вашем Mac — через Neural Engine.",
-  "Звук и транскрипты не уходят с Mac: без облака и аккаунтов.",
-  "Записи лежат обычными файлами в Application Support — забирайте и удаляйте когда угодно.",
-  "Работает без сети: выключите Wi-Fi и убедитесь сами.",
-];
-
-const waveBars = Array.from({ length: 28 }, (_, i) => i);
+import { Features } from "./sections/Features";
+import { Trust } from "./sections/Trust";
+import { FinalCta } from "./sections/FinalCta";
+import { contactUrl, downloadUrl, releasesUrl } from "./site-content.mjs";
 
 function App() {
   return (
@@ -43,135 +37,9 @@ function App() {
         <Example />
         <Kit />
         <Setup />
-
-        <section className="features section-shell" id="features" aria-labelledby="features-title">
-          <div className="section-heading">
-            <p className="eyebrow">От записи до готового текста</p>
-            <h2 id="features-title">Один процесс вместо четырёх инструментов</h2>
-            <p>Запись, транскрипция, спикеры и просмотр — в одном окне, без внешних сервисов.</p>
-          </div>
-          <div className="feature-grid">
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">01</span>
-              <div className="feature-icon" aria-hidden="true">🎙 + 🔊</div>
-              <h3>Оба потока звука</h3>
-              <p>
-                Микрофон и системный звук пишутся одновременно — слышно и вас, и собеседников
-                в Zoom, Meet или любом другом приложении.
-              </p>
-            </article>
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">02</span>
-              <div className="feature-icon" aria-hidden="true">···|||</div>
-              <h3>Транскрипция, когда удобно</h3>
-              <p>
-                Запись сохраняется, а транскрипцию запускаете кнопкой — или включите автозапуск
-                после остановки. Несколько записей можно поставить в очередь, готовые
-                пропускаются. Нужен текст прямо во время звонка — включите live в настройках.
-              </p>
-            </article>
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">03</span>
-              <div className="feature-icon" aria-hidden="true">S1 / S2</div>
-              <h3>Кто что сказал</h3>
-              <p>
-                Ваш микрофон и звук собеседников пишутся раздельно, поэтому в тексте реплики
-                уже подписаны.
-                Нужно различить каждого участника — перетранскрибируйте с разделением
-                по спикерам, диаризация тоже локальная.
-              </p>
-            </article>
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">04</span>
-              <div className="feature-icon" aria-hidden="true">▶ ¶</div>
-              <h3>Плеер, связанный с текстом</h3>
-              <p>
-                Клик по фразе — перемотка к этому месту. При воспроизведении текущая реплика
-                подсвечивается. Экспорт в TXT, Markdown и SRT или сразу в хранилище Obsidian.
-              </p>
-            </article>
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">05</span>
-              <div className="feature-icon" aria-hidden="true">▶ ↻</div>
-              <h3>Все разговоры остаются у вас</h3>
-              <p>
-                Каждая запись хранится на Mac в компактном аудиокодеке Opus. Переслушайте её в любой момент
-                или перетранскрибируйте заново — другой моделью или с разделением по спикерам.
-              </p>
-            </article>
-            <article className="feature-card">
-              <span className="feature-number" aria-hidden="true">06</span>
-              <div className="feature-icon" aria-hidden="true">⇣ ♪</div>
-              <h3>Уже записанное — тоже в текст</h3>
-              <p>
-                Перетащите в окно файл с диктофона, запись Zoom или любое другое аудио и видео —
-                MacTranscribe превратит его в текст.
-              </p>
-            </article>
-          </div>
-        </section>
-
-        <section className="engine section-shell" aria-labelledby="engine-title">
-          <div className="engine-copy">
-            <p className="eyebrow">Под капотом</p>
-            <h2 id="engine-title">Модель уровня облачных сервисов — на вашем железе</h2>
-            <p>
-              Распознавание — <strong>Whisper</strong> (CoreML, WhisperKit), для русского можно
-              выбрать <strong>GigaAM v3</strong> — примерно в 5 раз быстрее Whisper и точнее на
-              живой речи. Диаризация —{" "}
-              <strong>pyannote</strong>. Русский по умолчанию, ещё 12 языков и автоопределение —
-              в настройках.
-            </p>
-          </div>
-          <ul className="engine-stats" aria-label="Ключевые характеристики">
-            <li><strong>до 947 МБ</strong><small>модель Whisper, скачивается один раз</small></li>
-            <li><strong>326 МБ</strong><small>GigaAM v3 для русского, по желанию</small></li>
-            <li><strong>13 языков</strong><small>и автоопределение</small></li>
-            <li><strong>Opus</strong><small>аудиокодек для компактного архива</small></li>
-          </ul>
-        </section>
-
-        <section className="privacy" id="privacy" aria-labelledby="privacy-title">
-          <div className="privacy-inner">
-            <div className="privacy-intro">
-              <p className="eyebrow">Приватность по умолчанию</p>
-              <h2 id="privacy-title">Разговоры остаются между вами</h2>
-              <p>
-                Рабочие встречи — не то, что хочется загружать на чужие серверы.
-                MacTranscribe и не предлагает.
-              </p>
-            </div>
-            <ul className="privacy-list">
-              {privacyItems.map((item, index) => (
-                <li key={item}>
-                  <span aria-hidden="true">0{index + 1}</span>
-                  <p>{item}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-
-        <section className="final-cta" aria-labelledby="download-title">
-          <div className="final-cta-art" aria-hidden="true">
-            <span className="final-rec"><i />REC</span>
-            <div className="final-wave">
-              {waveBars.slice(0, 16).map((i) => (
-                <i key={i} style={{ animationDelay: `${(i % 5) * 0.17}s` }} />
-              ))}
-            </div>
-          </div>
-          <div className="final-cta-copy">
-            <p className="eyebrow">Готово к встречам</p>
-            <h2 id="download-title">Транскрибация — прямо на вашем Mac, локальными ИИ-моделями</h2>
-            <p>Бесплатно. Без подписки. Звук и текст никуда не отправляются.</p>
-            <a className="download-button download-button--invert" href={downloadUrl} data-umami-event="download" data-umami-event-place="final">
-              Скачать MacTranscribe
-              <span aria-hidden="true">↓</span>
-            </a>
-            <small>{release.macOS} · DMG {release.sizeLabel}</small>
-          </div>
-        </section>
+        <Features />
+        <Trust />
+        <FinalCta />
       </main>
 
       <footer className="site-footer">
@@ -182,6 +50,7 @@ function App() {
         <nav aria-label="Ссылки проекта">
           <a href="./docs/">Документация</a>
           <a href={releasesUrl} target="_blank" rel="noreferrer">Все версии</a>
+          <a href={contactUrl} target="_blank" rel="noreferrer">Контакт</a>
         </nav>
       </footer>
     </>

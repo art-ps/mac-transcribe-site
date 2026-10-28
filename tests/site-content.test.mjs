@@ -97,16 +97,23 @@ test("example viewer shows all four demo documents", () => {
   for (const key of ["transcript", "analysis", "synthesis", "requirements"]) assert.match(sources, new RegExp(`demoDocs\\.${key}\\b`));
 });
 
-// Task 6 добавит вторую ссылку на набор в финальном блоке (место final).
 test("every kit link reports a umami event with its place", () => {
   const links = tsx.match(/<a\b[^>]*href=\{kitUrl\}[^>]*>/g) ?? [];
-  assert.equal(links.length, 1);
+  assert.equal(links.length, 2);
   for (const link of links) assert.match(link, /data-umami-event="kit"/);
   const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
-  assert.deepEqual(places.sort(), ["kit"]);
+  assert.deepEqual(places.sort(), ["final", "kit"]);
 });
 
 test("setup block links to the workflow docs and names the export button", () => {
   assert.match(sources, /href="\.\/docs\/workflow"/);
   assert.match(sources, /кнопкой «В хранилище»/u);
+});
+
+test("features, trust and FAQ blocks are on the page", () => {
+  assert.match(sources, /<details/);
+  assert.match(sources, /href=\{contactUrl\}/);
+  for (const q of ["Нужен ли Obsidian", "подписка", "без интернета", "ошибку в расшифровке", "Где лежат файлы", "готовую запись", "делает само"]) {
+    assert.match(sources, new RegExp(q, "u"), q);
+  }
 });
