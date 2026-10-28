@@ -8,7 +8,9 @@ const allBlocks = () => [
 ];
 
 test("every source block points at a demo transcript with a timecode", () => {
-  for (const b of allBlocks().filter((b) => b.kind === "source")) {
+  const sources = allBlocks().filter((b) => b.kind === "source");
+  assert.ok(sources.length > 0);
+  for (const b of sources) {
     assert.ok(demoFileNames.includes(b.file), b.file);
     assert.match(b.time, /^\d{2}:\d{2}:\d{2}$/);
   }

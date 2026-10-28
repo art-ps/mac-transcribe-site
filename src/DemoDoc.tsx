@@ -30,6 +30,10 @@ function renderBlock(block: DemoBlock, key: number) {
       );
     case "meta":
       return <p key={key} className="demo-meta">{block.text}</p>;
+    default: {
+      const _x: never = block;
+      return _x;
+    }
   }
 }
 

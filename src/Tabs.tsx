@@ -41,7 +41,7 @@ export function Tabs({ label, tabs, defaultId }: { label: string; tabs: Tab[]; d
             role="tab"
             id={`${prefix}-tab-${tab.id}`}
             aria-selected={i === activeIndex}
-            aria-controls={`${prefix}-panel-${tab.id}`}
+            aria-controls={i === activeIndex ? `${prefix}-panel-${tab.id}` : undefined}
             tabIndex={i === activeIndex ? 0 : -1}
             onClick={() => select(i)}
           >
