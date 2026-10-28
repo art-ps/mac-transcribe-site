@@ -1,5 +1,7 @@
 import { Hero } from "./sections/Hero";
 import { Scenarios } from "./sections/Scenarios";
+import { Example } from "./sections/Example";
+import { Kit } from "./sections/Kit";
 import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
 
 const privacyItems = [
@@ -37,6 +39,8 @@ function App() {
       <main id="top">
         <Hero />
         <Scenarios />
+        <Example />
+        <Kit />
 
         <section className="features section-shell" id="features" aria-labelledby="features-title">
           <div className="section-heading">

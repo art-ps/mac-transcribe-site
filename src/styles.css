@@ -310,6 +310,78 @@ a { color: inherit; }
 
 .scenarios-note { margin: 18px 0 0; color: var(--ink-soft); }
 
+/* ---------- example ---------- */
+
+.example-steps {
+  margin: 0 0 32px;
+  padding-left: 1.4em;
+  color: var(--ink-soft);
+}
+
+.example-steps li { margin-bottom: 6px; }
+
+.example-viewer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 18rem;
+  gap: 24px;
+  align-items: start;
+}
+
+.demo-path {
+  display: block;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--s1);
+  overflow-wrap: anywhere;
+}
+
+.demo-doc .demo-source { margin-top: 10px; margin-bottom: 4px; }
+
+.example-markers h3 { font-size: 1rem; margin: 0 0 14px; }
+.example-markers ul { margin: 0; padding: 0; list-style: none; }
+.example-markers li { margin-bottom: 14px; }
+.example-markers b, .example-markers span { display: block; }
+.example-markers span { font-size: 0.86rem; color: var(--ink-soft); }
+
+.example-note { margin: 18px 0 0; font-size: 0.86rem; color: var(--ink-soft); }
+
+/* ---------- kit ---------- */
+
+.kit-body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+}
+
+.kit-tree {
+  margin: 0;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+.kit-contents { margin: 0 0 16px; padding-left: 1.2em; }
+.kit-contents li { margin-bottom: 6px; }
+.kit-copy code { font-family: var(--font-mono); font-size: 0.88em; color: var(--s1); }
+.kit-copy p { color: var(--ink-soft); }
+
+.kit-size {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
 .hero-description { color: var(--ink-soft); max-width: 34rem; margin-bottom: 28px; }
 
 .download-button {
@@ -604,6 +676,7 @@ a { color: inherit; }
   .engine, .privacy-inner, .final-cta { grid-template-columns: 1fr; }
   .final-cta-art { border-right: none; border-bottom: 1px solid var(--line); }
   .header-nav { display: none; }
+  .example-viewer, .kit-body { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -92,3 +92,16 @@ test("hero states the outcome and offers the example", () => {
 test("header navigation covers the new sections", () => {
   for (const id of ["#scenarios", "#example", "#kit", "#setup", "#faq"]) assert.match(sources, new RegExp(`href="${id}"`));
 });
+
+test("example viewer shows all four demo documents", () => {
+  for (const key of ["transcript", "analysis", "synthesis", "requirements"]) assert.match(sources, new RegExp(`demoDocs\\.${key}\\b`));
+});
+
+// Task 6 добавит вторую ссылку на набор в финальном блоке (место final).
+test("every kit link reports a umami event with its place", () => {
+  const links = tsx.match(/<a\b[^>]*href=\{kitUrl\}[^>]*>/g) ?? [];
+  assert.equal(links.length, 1);
+  for (const link of links) assert.match(link, /data-umami-event="kit"/);
+  const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
+  assert.deepEqual(places.sort(), ["kit"]);
+});
