@@ -1,9 +1,28 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { downloadUrl, releasesUrl, release } from "../src/site-content.mjs";
+import { readFileSync, readdirSync } from "node:fs";
+import {
+  downloadUrl,
+  releasesUrl,
+  release,
+  kitUrl,
+  contactUrl,
+  authorUrl,
+} from "../src/site-content.mjs";
 
-const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");
+const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+const srcDir = new URL("../src/", import.meta.url);
+const tsx = readdirSync(srcDir, { recursive: true })
+  .filter((f) => f.endsWith(".tsx"))
+  .sort()
+  .map((f) => readFileSync(new URL(f, srcDir), "utf8"))
+  .join("\n");
+const indexHtml = read("index.html");
+const sources = tsx + indexHtml;
+const docsPages = readdirSync(new URL("../docs/", import.meta.url))
+  .filter((f) => f.endsWith(".md"))
+  .map((f) => read(`docs/${f}`))
+  .join("\n");
 
 test("release metadata describes the shipped DMG", () => {
   assert.equal(release.fileName, "MacTranscribe.dmg");
@@ -26,7 +45,7 @@ test("no link points at the private code repository", () => {
 });
 
 test("every download link reports a umami event with its place", () => {
-  const links = app.match(/<a\b[^>]*href=\{downloadUrl\}[^>]*>/g) ?? [];
+  const links = tsx.match(/<a\b[^>]*href=\{downloadUrl\}[^>]*>/g) ?? [];
   assert.equal(links.length, 3);
   for (const link of links) assert.match(link, /data-umami-event="download"/);
   const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
@@ -35,8 +54,25 @@ test("every download link reports a umami event with its place", () => {
 
 // При первом запуске качается модель финального прохода: Large 947 МБ или Small 483 МБ.
 // 626 МБ — Turbo для live, его лендинг уже однажды выдавал за первую загрузку.
-test("landing does not claim the 626 MB Turbo as the first download", async () => {
-  const { readFile } = await import("node:fs/promises");
-  const landing = (await readFile(new URL("../src/App.tsx", import.meta.url), "utf8")) + release.modelLabel;
-  assert.doesNotMatch(landing, /626/);
+test("release facts match the shipped app", () => {
+  assert.equal(release.macOS, "macOS 26.0+, Apple Silicon");
+  assert.equal(release.sizeLabel, "40 МБ");
+});
+
+test("kit and contact links point at the public releases repo", () => {
+  assert.equal(
+    kitUrl,
+    "https://github.com/art-ps/mac-transcribe-releases/releases/download/starter-kit/mactranscribe-starter-kit.zip",
+  );
+  assert.equal(contactUrl, "https://github.com/art-ps/mac-transcribe-releases/issues");
+  for (const url of [downloadUrl, releasesUrl, kitUrl, contactUrl, authorUrl]) {
+    assert.doesNotMatch(url, /github\.com\/art-ps\/(mac-transcribe\/|product-ai)/);
+  }
+});
+
+test("site copy has no stale or forbidden wording", () => {
+  const text = sources + docsPages + release.modelLabel + release.sizeLabel + release.macOS;
+  for (const bad of ["нотариз", "xattr", "суммаризац", "В вольт", "626", "26.4", "60 МБ"]) {
+    assert.doesNotMatch(text, new RegExp(bad, "iu"), bad);
+  }
 });

@@ -7,3 +7,7 @@ export declare const release: Readonly<{
 
 export declare const releasesUrl: string;
 export declare const downloadUrl: string;
+export declare const kitUrl: string;
+export declare const kitSizeLabel: string;
+export declare const contactUrl: string;
+export declare const authorUrl: string;

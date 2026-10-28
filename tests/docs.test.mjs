@@ -25,11 +25,12 @@ test("every sidebar item points at an existing page", () => {
 
 // Владелец убрал это с сайта: суммаризация уходит из приложения, нотаризацию не рекламируем,
 // а «Opus» без слова «кодек» путают с моделью Claude Opus.
+// «claude» снят — Claude Code теперь часть описанного процесса (спека, приёмка п. 6).
 test("docs never mention what the site dropped", () => {
   const configText = readFileSync(new URL(".vitepress/config.mts", docsDir), "utf8");
   const texts = [...pages.map((page) => [page, read(page)]), ["config.mts", configText]];
   for (const [label, text] of texts) {
-    assert.doesNotMatch(text, /суммариз|нотариз|claude/iu, label);
+    assert.doesNotMatch(text, /суммариз|нотариз/iu, label);
     for (const match of text.matchAll(/Opus/g)) {
       const around = text.slice(Math.max(0, match.index - 40), match.index + 44);
       assert.match(around, /кодек/iu, `${label}: "Opus" without "кодек": …${around}…`);
