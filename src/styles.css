@@ -382,6 +382,27 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 
+/* ---------- setup ---------- */
+
+.setup-routes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.setup-route {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  padding: 24px 20px;
+}
+
+.setup-route h3 { margin: 0 0 12px; }
+.setup-route ol { margin: 0; padding-left: 1.2em; color: var(--ink-soft); }
+.setup-route li { margin-bottom: 8px; }
+.setup-route code { font-family: var(--font-mono); font-size: 0.88em; color: var(--s1); }
+.setup-note { margin: 20px 0 8px; color: var(--ink-soft); }
+
 .hero-description { color: var(--ink-soft); max-width: 34rem; margin-bottom: 28px; }
 
 .download-button {
@@ -558,36 +579,6 @@ a { color: inherit; }
 }
 
 .privacy-list p { margin: 0; font-size: 0.97rem; }
-
-/* ---------- install ---------- */
-
-.install-steps {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-  counter-reset: step;
-}
-
-.install-steps li {
-  display: flex;
-  gap: 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--bg-raised);
-  padding: 24px 20px;
-}
-
-.step-number {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--s1);
-  padding-top: 4px;
-}
-
-.install-steps p { margin: 0; color: var(--ink-soft); font-size: 0.92rem; }
 
 /* ---------- final CTA ---------- */
 

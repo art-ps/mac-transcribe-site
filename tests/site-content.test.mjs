@@ -105,3 +105,8 @@ test("every kit link reports a umami event with its place", () => {
   const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
   assert.deepEqual(places.sort(), ["kit"]);
 });
+
+test("setup block links to the workflow docs and names the export button", () => {
+  assert.match(sources, /href="\.\/docs\/workflow"/);
+  assert.match(sources, /кнопкой «В хранилище»/u);
+});

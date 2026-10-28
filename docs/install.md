@@ -36,3 +36,5 @@ rm -rf ~/Library/Application\ Support/sherpa
 tccutil reset Microphone in.pisarev.mac-transcribe
 tccutil reset ScreenCapture in.pisarev.mac-transcribe
 ```
+
+Дальше — как связать записи с хранилищем и агентом: [«Встречи → хранилище → агент»](/workflow).

@@ -12,6 +12,7 @@ export const sidebar = [
     items: [
       { text: "Запись и транскрипция", link: "/transcription" },
       { text: "Работа с записями", link: "/recordings" },
+      { text: "Встречи → хранилище → агент", link: "/workflow" },
     ],
   },
   {

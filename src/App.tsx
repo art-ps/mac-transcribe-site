@@ -2,6 +2,7 @@ import { Hero } from "./sections/Hero";
 import { Scenarios } from "./sections/Scenarios";
 import { Example } from "./sections/Example";
 import { Kit } from "./sections/Kit";
+import { Setup } from "./sections/Setup";
 import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
 
 const privacyItems = [
@@ -41,6 +42,7 @@ function App() {
         <Scenarios />
         <Example />
         <Kit />
+        <Setup />
 
         <section className="features section-shell" id="features" aria-labelledby="features-title">
           <div className="section-heading">
@@ -148,37 +150,6 @@ function App() {
               ))}
             </ul>
           </div>
-        </section>
-
-        <section className="install section-shell" id="install" aria-labelledby="install-title">
-          <div className="section-heading install-heading">
-            <p className="eyebrow">Три шага</p>
-            <h2 id="install-title">Установите — и жмите «Запись»</h2>
-            <p>Перетащили в «Программы» — и можно запускать, без дополнительных шагов.</p>
-          </div>
-          <ol className="install-steps">
-            <li>
-              <span className="step-number">01</span>
-              <div>
-                <h3>Перенесите приложение</h3>
-                <p>Откройте DMG и перетащите MacTranscribe в папку Applications.</p>
-              </div>
-            </li>
-            <li>
-              <span className="step-number">02</span>
-              <div>
-                <h3>Разрешите доступ</h3>
-                <p>Микрофон — для вашего голоса, запись экрана — так macOS отдаёт системный звук. Видео не записывается.</p>
-              </div>
-            </li>
-            <li>
-              <span className="step-number">03</span>
-              <div>
-                <h3>Дождитесь модель</h3>
-                <p>При первом запуске приложение скачает модель распознавания (483–947 МБ, зависит от памяти Mac). Дальше интернет не нужен. Для русского можно отдельно скачать GigaAM v3 (326 МБ) в настройках.</p>
-              </div>
-            </li>
-          </ol>
         </section>
 
         <section className="final-cta" aria-labelledby="download-title">
