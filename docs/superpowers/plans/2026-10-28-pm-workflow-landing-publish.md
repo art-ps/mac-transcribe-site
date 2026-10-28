@@ -6,6 +6,8 @@
 
 ## 1. Собрать архив набора — только по «да» владельца
 
+Сначала: `git -C /Users/artem/projects/product-ai status --short lite` пуст (в архив уходит рабочая папка, не git-дерево).
+
 ```bash
 cd /path/to/scratch   # не в репозиторий сайта: *.zip в .gitignore, но архиву там не место
 /Users/artem/projects/mac-transcribe-site/tools/pack-kit.sh /Users/artem/projects/product-ai/lite
@@ -37,9 +39,9 @@ gh release create starter-kit mactranscribe-starter-kit.zip \
 
 Транскрибация встреч на Mac. Приложение записывает микрофон и системный звук — вас и собеседников в любом созвоне, — расшифровывает разговор локально, со спикерами и таймкодами, и экспортирует результат в TXT, Markdown и SRT или кнопкой «В хранилище» кладёт транскрипт markdown-файлом в выбранную папку проекта.
 
-Скачать последнюю версию: Releases → Latest → MacTranscribe.dmg
+Скачать последнюю версию: https://github.com/art-ps/mac-transcribe-releases/releases/latest/download/MacTranscribe.dmg
 
-Установка: перетащить приложение в «Программы» — дополнительных шагов не нужно. Требования: macOS 26.0+, Apple Silicon.
+Установка: перетащить в «Программы»; при первом запуске приложение скачает модели и попросит доступ к микрофону и записи экрана. Требования: macOS 26.0+, Apple Silicon.
 
 - Сайт: https://art-ps.github.io/mac-transcribe-site/
 - Документация: https://art-ps.github.io/mac-transcribe-site/docs/
