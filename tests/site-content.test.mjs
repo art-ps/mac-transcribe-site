@@ -72,7 +72,13 @@ test("kit and contact links point at the public releases repo", () => {
 
 test("site copy has no stale or forbidden wording", () => {
   const text = sources + docsPages + release.modelLabel + release.sizeLabel + release.macOS;
-  for (const bad of ["нотариз", "xattr", "суммаризац", "В вольт", "626", "26.4", "60 МБ"]) {
+  for (const bad of ["нотариз", "xattr", "суммаризац", "В вольт", "26.4", "60 МБ"]) {
     assert.doesNotMatch(text, new RegExp(bad, "iu"), bad);
   }
+});
+
+// 626 МБ — Turbo для live, не первая загрузка: на лендинге запрещено, в docs (страница про live) — честный факт.
+test("landing does not mention 626", () => {
+  const mjs = readdirSync(srcDir).filter((f) => f.endsWith(".mjs")).map((f) => readFileSync(new URL(f, srcDir), "utf8")).join("\n");
+  assert.doesNotMatch(tsx + mjs + indexHtml, /626/);
 });
