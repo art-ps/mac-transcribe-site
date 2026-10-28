@@ -1,3 +1,5 @@
+import { Hero } from "./sections/Hero";
+import { Scenarios } from "./sections/Scenarios";
 import { downloadUrl, release, releasesUrl } from "./site-content.mjs";
 
 const privacyItems = [
@@ -19,9 +21,11 @@ function App() {
             <span>MacTranscribe</span>
           </a>
           <nav className="header-nav" aria-label="Основная навигация">
-            <a href="#features">Возможности</a>
-            <a href="#privacy">Приватность</a>
-            <a href="#install">Установка</a>
+            <a href="#scenarios">Сценарии</a>
+            <a href="#example">Пример</a>
+            <a href="#kit">Набор</a>
+            <a href="#setup">Настройка</a>
+            <a href="#faq">FAQ</a>
             <a href="./docs/">Документация</a>
           </nav>
           <a className="header-download" href={downloadUrl} data-umami-event="download" data-umami-event-place="header">
@@ -31,40 +35,8 @@ function App() {
       </header>
 
       <main id="top">
-        <section className="hero" aria-labelledby="hero-title">
-          <div className="hero-copy">
-            <div className="product-badge">
-              <img src="./mac-transcribe-icon.png" alt="" width="46" height="46" />
-              <div>
-                <strong>MacTranscribe</strong>
-                <span>Бесплатно для macOS</span>
-              </div>
-            </div>
-            <p className="eyebrow">Встречи, звонки, интервью</p>
-            <h1 id="hero-title">Следующий созвон уже можно не конспектировать</h1>
-            <p className="hero-description">
-              MacTranscribe пишет микрофон и системный звук одновременно и превращает записи
-              в текст — ваши реплики отдельно от собеседников. Модель работает
-              локально на Neural Engine — интернет нужен один раз, чтобы её скачать.
-            </p>
-            <a className="download-button" href={downloadUrl} data-umami-event="download" data-umami-event-place="hero">
-              Скачать MacTranscribe
-              <span aria-hidden="true">↓</span>
-            </a>
-            <p className="release-note">
-              {release.macOS} <span aria-hidden="true">·</span> DMG {release.sizeLabel}{" "}
-              <span aria-hidden="true">·</span> {release.modelLabel}
-            </p>
-          </div>
-
-          <figure className="hero-shot">
-            <img
-              src="./app-screenshot.webp"
-              alt="Окно MacTranscribe: список записей слева, транскрипт со спикерами и таймкодами, плеер с волной и кнопками «Экспорт» и «Перетранскрибировать»"
-              loading="eager"
-            />
-          </figure>
-        </section>
+        <Hero />
+        <Scenarios />
 
         <section className="features section-shell" id="features" aria-labelledby="features-title">
           <div className="section-heading">

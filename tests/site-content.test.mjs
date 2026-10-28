@@ -49,7 +49,7 @@ test("every download link reports a umami event with its place", () => {
   assert.equal(links.length, 3);
   for (const link of links) assert.match(link, /data-umami-event="download"/);
   const places = links.map((link) => link.match(/data-umami-event-place="([a-z]+)"/)?.[1]);
-  assert.deepEqual(places, ["header", "hero", "final"]);
+  assert.deepEqual(places.sort(), ["final", "header", "hero"]);
 });
 
 // При первом запуске качается модель финального прохода: Large 947 МБ или Small 483 МБ.
@@ -81,4 +81,14 @@ test("site copy has no stale or forbidden wording", () => {
 test("landing does not mention 626", () => {
   const mjs = readdirSync(srcDir).filter((f) => f.endsWith(".mjs")).map((f) => readFileSync(new URL(f, srcDir), "utf8")).join("\n");
   assert.doesNotMatch(tsx + mjs + indexHtml, /626/);
+});
+
+test("hero states the outcome and offers the example", () => {
+  assert.match(sources, /Ваши встречи — основа для исследований, решений и требований/u);
+  const example = sources.match(/<a\b[^>]*href="#example"[^>]*>/g) ?? [];
+  assert.ok(example.some((a) => /data-umami-event="example"/.test(a) && /data-umami-event-place="hero"/.test(a)));
+});
+
+test("header navigation covers the new sections", () => {
+  for (const id of ["#scenarios", "#example", "#kit", "#setup", "#faq"]) assert.match(sources, new RegExp(`href="${id}"`));
 });
