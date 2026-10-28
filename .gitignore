@@ -3,3 +3,4 @@ dist/
 .superpowers/sdd/
 *.tsbuildinfo
 docs/.vitepress/cache
+*.zip
