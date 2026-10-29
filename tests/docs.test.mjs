@@ -69,3 +69,21 @@ test("landing links to the docs from the header and the footer", () => {
   const app = readFileSync(new URL("../src/App.tsx", import.meta.url), "utf8");
   assert.equal(app.match(/href="\.\/docs\/"/g)?.length, 2);
 });
+
+test("install page describes the onboarding window", () => {
+  const text = read("install.md");
+  for (const phrase of ["Показать знакомство", "Пропустить", "Разделение говорящих"]) {
+    assert.ok(text.includes(phrase), `install.md: no «${phrase}»`);
+  }
+});
+
+test("settings page lists the speaker separation models", () => {
+  assert.ok(read("settings.md").includes("Разделение говорящих"));
+});
+
+// С v0.1.47 модели выбирают в окне знакомства, сами они не качаются.
+test("no page claims models download by themselves on first launch", () => {
+  for (const page of pages) {
+    assert.doesNotMatch(read(page), /При первом запуске MacTranscribe скачивает/u, page);
+  }
+});
