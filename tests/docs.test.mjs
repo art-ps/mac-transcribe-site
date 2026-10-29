@@ -87,3 +87,11 @@ test("no page claims models download by themselves on first launch", () => {
     assert.doesNotMatch(read(page), /При первом запуске MacTranscribe скачивает/u, page);
   }
 });
+
+test("recordings page covers search and audio deletion", () => {
+  const text = read("recordings.md");
+  for (const phrase of ["Поиск", "Найти в транскрипте", "⌘F", "Удалить аудио",
+                        "Транскрипт останется, перетранскрибировать будет нельзя."]) {
+    assert.ok(text.includes(phrase), `recordings.md: no «${phrase}»`);
+  }
+});
