@@ -35,6 +35,21 @@ function App() {
 
       <main id="top">
         <Hero />
+        <section className="app-shot" aria-labelledby="app-shot-title">
+          <div className="container app-shot-grid">
+            <img src="./app-transcript.jpg" width="1400" height="1181" loading="lazy"
+              alt="Окно MacTranscribe: транскрипт созвона, у каждой реплики имя говорящего и таймкод" />
+            <div className="app-shot-copy">
+              <h2 id="app-shot-title">Транскрипт с говорящими и таймкодами</h2>
+              <p>Ваш микрофон подписан «Я», собеседники — «Спикер 1», «Спикер 2». У каждой реплики есть время: по нему легко найти место в записи.</p>
+              <ul>
+                <li>Экспорт — текст уходит в папку проекта.</li>
+                <li>Перетранскрибировать — заново, другой моделью.</li>
+                <li>Аудио рядом: послушать или скачать.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
         <Scenarios />
         <Example />
         <Kit />

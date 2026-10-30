@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import {
   downloadUrl,
   releasesUrl,
@@ -147,4 +147,10 @@ test("landing does not claim one model downloads on first launch", () => {
   for (const stale of ["загружается при первом запуске", "скачать модель (483–947 МБ)"]) {
     assert.ok(!(tsx + mjs).includes(stale), stale);
   }
+});
+
+test("landing shows the app screenshot", () => {
+  assert.ok(tsx.includes("app-transcript.jpg"));
+  assert.ok(tsx.includes("Транскрипт с говорящими и таймкодами"));
+  assert.ok(existsSync(new URL("../public/app-transcript.jpg", import.meta.url)));
 });
