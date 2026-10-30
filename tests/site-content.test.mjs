@@ -23,6 +23,8 @@ const docsPages = readdirSync(new URL("../docs/", import.meta.url))
   .filter((f) => f.endsWith(".md"))
   .map((f) => read(`docs/${f}`))
   .join("\n");
+const styles = read("src/styles.css");
+const base = read("src/base.css");
 
 test("release metadata describes the shipped DMG", () => {
   assert.equal(release.fileName, "MacTranscribe.dmg");
@@ -116,4 +118,26 @@ test("features, trust and FAQ blocks are on the page", () => {
   for (const q of ["Нужен ли Obsidian", "подписка", "без интернета", "ошибку в расшифровке", "Где лежат файлы", "готовую запись", "делает само"]) {
     assert.match(sources, new RegExp(q, "u"), q);
   }
+});
+
+test("stylesheet opens with the Hallmark stamp", () => {
+  assert.match(styles.trimStart(), /^\/\* Hallmark/);
+});
+
+test("no eyebrow or tracked mono labels in the markup", () => {
+  assert.doesNotMatch(tsx, /className="eyebrow"|chain-label/);
+});
+
+test("no transition: all and no height keyframes", () => {
+  for (const css of [styles, base]) {
+    assert.doesNotMatch(css, /transition:\s*all/);
+    for (const kf of css.match(/@keyframes[^{]+\{(?:[^{}]*\{[^}]*\})*[^}]*\}/g) ?? []) {
+      assert.doesNotMatch(kf, /\bheight\s*:/, kf);
+    }
+  }
+});
+
+test("colour literals live only in the token blocks", () => {
+  const outside = styles.replace(/:root[^{]*\{[^}]*\}/g, "");
+  assert.doesNotMatch(outside, /#[0-9a-f]{3,8}\b|rgba?\(/i);
 });

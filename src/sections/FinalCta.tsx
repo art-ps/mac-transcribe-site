@@ -14,7 +14,6 @@ export function FinalCta() {
         </div>
       </div>
       <div className="final-cta-copy">
-        <p className="eyebrow">Первое действие</p>
         <h2 id="download-title">Начните с одного интервью</h2>
         <p>Запишите разговор, сохраните расшифровку и получите первую исследовательскую заметку по готовой инструкции.</p>
         <div className="final-actions">
