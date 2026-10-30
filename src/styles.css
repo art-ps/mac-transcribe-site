@@ -864,6 +864,7 @@ details > summary:hover { color: var(--color-accent); }
   .release-facts { grid-template-columns: minmax(0, 1fr); }
   .hero-actions .download-button, .hero-actions .secondary-button,
   .final-actions .download-button, .final-actions .secondary-button { padding-inline: var(--space-md); }
+  .final-actions .download-button { flex: 1 1 100%; justify-content: center; }
   .engine-stats { grid-template-columns: minmax(0, 1fr); }
   .final-cta-art { padding: var(--space-lg) var(--space-md); }
   .footer-inner { grid-template-columns: minmax(0, 1fr); }

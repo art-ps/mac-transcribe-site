@@ -47,7 +47,8 @@ function App() {
       <footer className="site-footer">
         <div className="container footer-inner">
           <p className="footer-signoff">
-            Автор — Артём Писарев, <a href={authorUrl} target="_blank" rel="noreferrer">vibecoded.ru</a>.
+            Автор — Артём Писарев, <a href={authorUrl} target="_blank" rel="noreferrer">vibecoded.ru</a>. Ошибки и вопросы —{" "}
+            <a href={contactUrl} target="_blank" rel="noreferrer">issues в репозитории релизов</a>.
           </p>
           <a className="brand footer-brand" href="#top" aria-label="MacTranscribe: к началу страницы">
             <img src="./mac-transcribe-icon.png" alt="" width="34" height="34" />
