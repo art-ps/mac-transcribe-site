@@ -128,10 +128,6 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .secondary-button:hover { background: var(--color-paper-2); border-color: var(--color-ink); }
 
-/* Финальный блок до Task 3: инверсная кнопка без тени. */
-.download-button--invert { background: var(--color-ink); border-color: var(--color-ink); color: var(--color-paper); }
-.download-button--invert:hover { background: var(--color-muted); border-color: var(--color-muted); }
-
 /* ---------- hero: Settled, текст и карта ---------- */
 
 .hero {
@@ -300,7 +296,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 /* ---------- footer: letter close ---------- */
 
 .site-footer {
-  margin-top: var(--section-gap-s);
+  margin-top: 0; /* перед подвалом — финальный band, отступ даёт он */
   padding-block: var(--space-3xl) var(--space-2xl);
   border-top: 1px solid var(--color-rule);
   color: var(--color-muted);
@@ -327,20 +323,6 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .site-footer nav a { color: var(--color-muted); font-size: var(--text-sm); white-space: nowrap; transition: color var(--dur-short) var(--ease-out); }
 .site-footer nav a:hover, .footer-signoff a:hover { color: var(--color-accent); }
 .site-footer a:active { color: var(--color-ink); }
-
-/* ---------- секции до Task 2–3: прежняя вёрстка на новых токенах ---------- */
-
-.section-shell {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: var(--space-3xl) var(--gutter);
-}
-
-.section-shell h2, .final-cta h2 { margin-bottom: var(--space-lg); }
-.section-shell > .lead { margin-bottom: var(--space-xl); color: var(--color-muted); }
-.section-shell p, .final-cta-copy p { margin-bottom: var(--space-sm); }
-.final-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm); }
-.section-shell h3 { margin-bottom: var(--space-xs); font-family: var(--font-body); font-weight: 600; font-size: var(--text-lg); }
 
 /* ---------- demo document ---------- */
 
@@ -417,7 +399,8 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   margin: 0;
 }
 
-.scenario > div {
+.scenario > div,
+.privacy-stages > li {
   --zone: var(--color-accent);
   position: relative;
   min-width: 0;
@@ -432,7 +415,8 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .scenario > div:nth-child(3) { --zone: var(--color-speaker-2); }
 
 /* Линия и наконечник к следующему узлу, как на карте hero. */
-.scenario > div:not(:last-child)::after {
+.scenario > div:not(:last-child)::after,
+.privacy-stages > li:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -442,7 +426,8 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   background: var(--color-muted);
 }
 
-.scenario > div:not(:last-child)::before {
+.scenario > div:not(:last-child)::before,
+.privacy-stages > li:not(:last-child)::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -670,7 +655,10 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .setup-docs:active { color: var(--color-muted); }
 
 
-/* ---------- features ---------- */
+/* ---------- features: Table и раскрытие «Под капотом» ---------- */
+
+.features { padding-block: var(--section-gap) 0; }
+.features h2 { margin-bottom: var(--space-2xl); }
 
 .features-table { width: 100%; border-collapse: collapse; }
 
@@ -678,116 +666,147 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .features-table td {
   text-align: left;
   vertical-align: top;
-  padding: 14px 16px 14px 0;
+  padding: var(--space-md) var(--space-lg) var(--space-md) 0;
   border-bottom: 1px solid var(--color-rule);
 }
 
 .features-table thead th {
-  font-family: var(--font-outlier);
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  font-size: var(--text-sm);
+  font-weight: 400;
   color: var(--color-muted);
 }
 
 .features-table tbody th { font-weight: 600; width: 30%; }
 .features-table td { color: var(--color-muted); }
 
-.engine-details { margin-top: 28px; }
-.engine-details > p { color: var(--color-muted); margin-top: 16px; }
+.engine-details { margin-top: var(--space-xl); }
+.engine-details > p { margin-top: var(--space-md); color: var(--color-muted); }
 
-details > summary { cursor: pointer; font-weight: 600; }
+details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  transition: color var(--dur-short) var(--ease-out);
+}
+
+details > summary:hover { color: var(--color-accent); }
+
+.engine-details > summary { padding-block: var(--space-sm); }
 
 .engine-stats {
   list-style: none;
-  margin: 0;
+  margin: var(--space-xl) 0 0;
   padding: 0;
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-lg) var(--gap-columns);
 }
 
 .engine-stats li {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  border: 1px solid var(--color-rule);
-  border-radius: 14px;
-  background: var(--color-paper-2);
-  padding: 16px 20px;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2xs);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-rule);
 }
 
 .engine-stats strong {
   font-family: var(--font-display);
-  font-size: 1.3rem;
+  font-size: var(--text-xl);
   font-weight: 500;
-  color: var(--color-speaker-1);
-  min-width: 5.5ch;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
 }
 
-.engine-stats li:nth-child(2) strong { color: var(--color-speaker-2); }
-.engine-stats li:nth-child(3) strong { color: var(--color-accent); }
-.engine-stats small { color: var(--color-muted); font-size: 0.9rem; }
+.engine-stats small { font-size: var(--text-sm); color: var(--color-muted); }
 
-/* ---------- trust & FAQ ---------- */
+/* ---------- privacy: три этапа узлами карты ---------- */
+
+.trust { padding-block: var(--section-gap-s) 0; }
+.privacy h2 { margin-bottom: var(--space-2xl); }
 
 .privacy-stages {
   list-style: none;
-  margin: 0 0 56px;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-columns);
 }
 
-.privacy-stages li {
-  border: 1px solid var(--color-rule);
-  border-radius: var(--radius-card);
-  background: var(--color-paper-2);
-  padding: 24px 20px;
+/* Этап — узел карты: красный — Mac, лавандовый — агент, бирюзовый — хранилище, как в легенде hero. */
+.privacy-stages > li:nth-child(2) { --zone: var(--color-speaker-2); }
+.privacy-stages > li:nth-child(3) { --zone: var(--color-speaker-1); }
+
+.privacy-stages h3 { margin-bottom: var(--space-xs); font-family: var(--font-body); font-weight: 600; font-size: var(--text-lg); }
+.privacy-stages p { color: var(--color-muted); }
+
+/* ---------- FAQ: Rows, заголовок на 1–4, вопросы на 5–12 ---------- */
+
+.faq {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-xl) var(--gap-columns);
+  margin-top: var(--section-gap-s);
 }
 
-.privacy-stages p { margin: 0; color: var(--color-muted); }
+.faq h2 { grid-column: 1 / span 4; }
+.faq-list { grid-column: 5 / span 8; border-bottom: 1px solid var(--color-rule); }
 
-.faq-list details { border-bottom: 1px solid var(--color-rule); padding: 16px 0; }
-.faq-list details p { margin: 10px 0 0; color: var(--color-muted); }
+.faq-list details { border-top: 1px solid var(--color-rule); }
+.faq-list summary { padding-block: var(--space-lg); font-size: var(--text-lg); line-height: 1.4; }
+.faq-list details p { padding-bottom: var(--space-lg); color: var(--color-muted); }
 
-.author { margin: 32px 0 0; color: var(--color-muted); }
-
-/* ---------- final CTA ---------- */
+/* ---------- final: Band, скачать рядом с REC-волной ---------- */
 
 .final-cta {
-  width: calc(100% - 2 * var(--gutter));
-  max-width: calc(var(--container) - 2 * var(--gutter));
-  margin: 0 auto 40px;
-  padding: 0 24px;
-  display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
-  gap: 0;
-  border: 1px solid var(--color-rule);
-  border-radius: 24px;
-  overflow: hidden;
-  background: var(--color-paper-3);
+  margin-top: var(--section-gap);
+  padding-block: var(--section-gap-s);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
 }
 
-.final-cta-art {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.final-cta-body {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-2xl) var(--gap-columns);
   align-items: center;
-  gap: 22px;
-  padding: 48px 24px;
-  border-right: 1px solid var(--color-rule);
+}
+
+.final-cta-copy { grid-column: 1 / span 7; }
+.final-cta-copy h2 { margin-bottom: var(--space-lg); }
+.final-cta-copy p { color: var(--color-muted); }
+
+.final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
+}
+
+.final-note { margin-top: var(--space-lg); font-size: var(--text-sm); }
+.final-cta .release-facts { margin-top: var(--space-xs); }
+
+/* Узел записи: верхняя кромка — зона MacTranscribe, как на карте. */
+.final-cta-art {
+  grid-column: 8 / span 5;
+  display: grid;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  border: 1px solid var(--color-rule);
+  border-top: 2px solid var(--color-accent);
+  border-radius: var(--radius-card);
+  background: var(--color-paper-3);
+  color: var(--color-ink);
 }
 
 .final-rec {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-family: var(--font-outlier);
-  letter-spacing: 0.14em;
+  gap: var(--space-xs);
   color: var(--color-accent);
-  font-size: 0.9rem;
+  font-weight: 600;
+  font-size: var(--text-sm);
 }
 
 .final-rec i {
@@ -798,7 +817,7 @@ details > summary { cursor: pointer; font-weight: 600; }
   animation: blink 1.2s steps(2, start) infinite;
 }
 
-.final-wave { display: flex; align-items: center; gap: 4px; height: 46px; width: 70%; }
+.final-wave { display: flex; align-items: center; gap: var(--space-2xs); height: 120px; }
 
 .final-wave i {
   flex: 1;
@@ -815,16 +834,6 @@ details > summary { cursor: pointer; font-weight: 600; }
   to { transform: scaleY(0.78); opacity: 1; }
 }
 
-.final-cta-copy { padding: 48px 40px; }
-.final-cta-copy p { color: var(--color-muted); }
-.final-cta-copy small {
-  display: block;
-  margin-top: 12px;
-  font-family: var(--font-outlier);
-  font-size: 0.76rem;
-  color: var(--color-muted);
-}
-
 /* ---------- responsive & motion ---------- */
 
 @media (max-width: 60rem) {
@@ -836,15 +845,18 @@ details > summary { cursor: pointer; font-weight: 600; }
   .map-node:nth-child(n) { grid-area: auto; }
   .map-node:nth-child(-n + 3)::after { top: 100%; right: auto; left: var(--space-lg); width: 1px; height: var(--space-xl); }
   .map-node:nth-child(-n + 3)::before { top: calc(100% + var(--space-xl)); right: auto; left: var(--space-lg); border: 0 solid transparent; border-top: var(--space-xs) solid var(--color-muted); border-inline-width: var(--space-2xs); transform: translate(-50%, -100%); }
-  .final-cta { grid-template-columns: minmax(0, 1fr); }
-  .final-cta-art { border-right: none; border-bottom: 1px solid var(--color-rule); }
+  .final-cta-body, .faq { grid-template-columns: minmax(0, 1fr); }
+  .final-cta-copy, .final-cta-art, .faq h2, .faq-list { grid-column: auto; }
+  .engine-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .example-head, .kit-body { grid-template-columns: minmax(0, 1fr); }
   .example-head h2, .example-steps, .kit-tree, .kit-copy { grid-column: auto; grid-row: auto; }
   .example-viewer { grid-template-columns: minmax(0, 1fr); }
   .example-markers { border-left: 0; border-top: 1px solid var(--color-rule); }
-  .scenario { grid-template-columns: minmax(0, 1fr); }
-  .scenario > div:not(:last-child)::after { top: 100%; left: var(--space-lg); width: 1px; height: var(--gap-columns); }
-  .scenario > div:not(:last-child)::before { top: calc(100% + var(--gap-columns)); left: var(--space-lg); border: 0 solid transparent; border-top: var(--space-xs) solid var(--color-muted); border-inline-width: var(--space-2xs); transform: translate(-50%, -100%); }
+  .scenario, .privacy-stages { grid-template-columns: minmax(0, 1fr); }
+  .scenario > div:not(:last-child)::after,
+  .privacy-stages > li:not(:last-child)::after { top: 100%; left: var(--space-lg); width: 1px; height: var(--gap-columns); }
+  .scenario > div:not(:last-child)::before,
+  .privacy-stages > li:not(:last-child)::before { top: calc(100% + var(--gap-columns)); left: var(--space-lg); border: 0 solid transparent; border-top: var(--space-xs) solid var(--color-muted); border-inline-width: var(--space-2xs); transform: translate(-50%, -100%); }
   .setup-routes { grid-template-columns: minmax(0, 1fr); }
 }
 
@@ -852,7 +864,8 @@ details > summary { cursor: pointer; font-weight: 600; }
   .release-facts { grid-template-columns: minmax(0, 1fr); }
   .hero-actions .download-button, .hero-actions .secondary-button,
   .final-actions .download-button, .final-actions .secondary-button { padding-inline: var(--space-md); }
-  .final-cta-copy { padding: var(--space-xl) var(--space-md); }
+  .engine-stats { grid-template-columns: minmax(0, 1fr); }
+  .final-cta-art { padding: var(--space-lg) var(--space-md); }
   .footer-inner { grid-template-columns: minmax(0, 1fr); }
   .scenarios [role="tab"] { flex: 1 1 100%; text-align: left; }
   .example-viewer [role="tablist"] { padding-inline: var(--space-md); }
@@ -861,6 +874,10 @@ details > summary { cursor: pointer; font-weight: 600; }
 
 @media (prefers-reduced-motion: reduce) {
   .map-node, .final-wave i, .final-rec i { animation: none; }
+  /* Волна стоит: полосы разной высоты вместо движения. */
+  .final-wave i { transform: scaleY(0.5); }
+  .final-wave i:nth-child(3n + 1) { transform: scaleY(0.3); }
+  .final-wave i:nth-child(4n + 2) { transform: scaleY(0.75); }
   .download-button:active, .secondary-button:active, .header-download:active, .tabs [role="tab"]:active { transform: none; }
   html { scroll-behavior: auto; }
 }

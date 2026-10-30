@@ -1,5 +1,3 @@
-import { authorUrl, contactUrl } from "../site-content.mjs";
-
 const stages = [
   {
     title: "Запись и расшифровка",
@@ -26,7 +24,7 @@ const faq = [
   },
   {
     q: "Что работает без интернета?",
-    a: "Запись, расшифровка и экспорт — модели работают на Mac. Интернет нужен, чтобы при первом запуске скачать модель (483–947 МБ). Анализ текста зависит от выбранного агента и его настроек.",
+    a: "Запись, расшифровка и экспорт — модели работают на Mac. Интернет нужен, чтобы скачать модели — их выбирают при первом запуске. Анализ текста зависит от выбранного агента и его настроек.",
   },
   {
     q: "Как проверить ошибку в расшифровке?",
@@ -48,31 +46,31 @@ const faq = [
 
 export function Trust() {
   return (
-    <section className="section-shell" id="faq" aria-labelledby="faq-title">
-      <div id="privacy" role="region" aria-labelledby="privacy-title">
-        <h2 id="privacy-title">Приватность по этапам</h2>
-        <ol className="privacy-stages">
-          {stages.map((stage) => (
-            <li key={stage.title}>
-              <h3>{stage.title}</h3>
-              <p>{stage.text}</p>
-            </li>
-          ))}
-        </ol>
+    <section className="trust" id="faq" aria-labelledby="faq-title">
+      <div className="container">
+        <div className="privacy" id="privacy" role="region" aria-labelledby="privacy-title">
+          <h2 id="privacy-title">Приватность по этапам</h2>
+          <ol className="privacy-stages">
+            {stages.map((stage) => (
+              <li key={stage.title}>
+                <h3>{stage.title}</h3>
+                <p>{stage.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div className="faq">
+          <h2 id="faq-title">Вопросы</h2>
+          <div className="faq-list">
+            {faq.map((item) => (
+              <details key={item.q}>
+                <summary>{item.q}</summary>
+                <p>{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
       </div>
-      <h2 id="faq-title">Вопросы</h2>
-      <div className="faq-list">
-        {faq.map((item) => (
-          <details key={item.q}>
-            <summary>{item.q}</summary>
-            <p>{item.a}</p>
-          </details>
-        ))}
-      </div>
-      <p className="author">
-        Автор — Артём Писарев, <a href={authorUrl} target="_blank" rel="noreferrer">vibecoded.ru</a>. Ошибки и вопросы —{" "}
-        <a href={contactUrl} target="_blank" rel="noreferrer">issues в репозитории релизов</a>.
-      </p>
     </section>
   );
 }

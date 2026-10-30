@@ -141,3 +141,10 @@ test("colour literals live only in the token blocks", () => {
   const outside = styles.replace(/:root[^{]*\{[^}]*\}/g, "");
   assert.doesNotMatch(outside, /#[0-9a-f]{3,8}\b|rgba?\(/i);
 });
+
+test("landing does not claim one model downloads on first launch", () => {
+  const mjs = read("src/site-content.mjs");
+  for (const stale of ["загружается при первом запуске", "скачать модель (483–947 МБ)"]) {
+    assert.ok(!(tsx + mjs).includes(stale), stale);
+  }
+});

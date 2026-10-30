@@ -2,7 +2,7 @@ export const release = Object.freeze({
   fileName: "MacTranscribe.dmg",
   sizeLabel: "40 МБ",
   macOS: "macOS 26.0+, Apple Silicon",
-  modelLabel: "модель 483–947 МБ загружается при первом запуске",
+  modelLabel: "модели выбираются при первом запуске",
 });
 
 // DMG живёт в GitHub Releases публичного репо (код приватный — ссылки туда отдают 404),
