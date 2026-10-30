@@ -428,8 +428,8 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   background: var(--color-paper-2);
 }
 
-.scenario > div:nth-child(2) { --zone: var(--color-speaker-2); }
-.scenario > div:nth-child(3) { --zone: var(--color-speaker-1); }
+.scenario > div:nth-child(2) { --zone: var(--color-speaker-1); }
+.scenario > div:nth-child(3) { --zone: var(--color-speaker-2); }
 
 /* Линия и наконечник к следующему узлу, как на карте hero. */
 .scenario > div:not(:last-child)::after {
@@ -554,7 +554,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--space-2xl) var(--gap-columns);
-  align-items: center;
+  align-items: start;
 }
 
 .kit-tree { grid-column: 1 / span 5; grid-row: 1; }
@@ -854,6 +854,7 @@ details > summary { cursor: pointer; font-weight: 600; }
   .final-actions .download-button, .final-actions .secondary-button { padding-inline: var(--space-md); }
   .final-cta-copy { padding: var(--space-xl) var(--space-md); }
   .footer-inner { grid-template-columns: minmax(0, 1fr); }
+  .scenarios [role="tab"] { flex: 1 1 100%; text-align: left; }
   .example-viewer [role="tablist"] { padding-inline: var(--space-md); }
   .example-viewer [role="tabpanel"], .example-markers { padding: var(--space-lg) var(--space-md); }
 }

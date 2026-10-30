@@ -44,12 +44,12 @@ export function Scenarios() {
                     <dd>{s.input}</dd>
                   </div>
                   <div>
-                    <dt>Что помогает подготовить агент</dt>
-                    <dd>{s.result}</dd>
-                  </div>
-                  <div>
                     <dt>Промпт из набора</dt>
                     <dd><code>{s.prompt}</code></dd>
+                  </div>
+                  <div>
+                    <dt>Что помогает подготовить агент</dt>
+                    <dd>{s.result}</dd>
                   </div>
                 </dl>
                 <a className="scenario-example" href="#example">Пример ниже</a>
