@@ -155,6 +155,7 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 }
 
 .hero .lead { margin-top: var(--space-lg); color: var(--color-muted); }
+.hero .lead + .lead { margin-top: var(--space-xs); }
 
 .hero-actions {
   display: flex;
@@ -390,7 +391,6 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 
 .scenarios { padding-block: var(--section-gap-s) 0; }
 .scenarios h2 { margin-bottom: var(--space-md); }
-.scenarios .lead { color: var(--color-muted); }
 .scenarios .tabs { margin-top: var(--space-2xl); }
 .scenarios [role="tabpanel"] { margin-top: var(--space-xl); }
 

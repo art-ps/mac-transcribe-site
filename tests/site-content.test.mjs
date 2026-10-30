@@ -154,3 +154,9 @@ test("landing shows the app screenshot", () => {
   assert.ok(tsx.includes("Транскрипт с говорящими и таймкодами"));
   assert.ok(existsSync(new URL("../public/app-transcript.jpg", import.meta.url)));
 });
+
+test("hero names the audience", () => {
+  const line = "Для продактов: интервью, созвоны с командой, демо";
+  assert.ok(read("src/sections/Hero.tsx").includes(line));
+  assert.ok(!read("src/sections/Scenarios.tsx").includes(line));
+});

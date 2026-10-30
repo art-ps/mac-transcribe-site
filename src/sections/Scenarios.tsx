@@ -29,7 +29,6 @@ export function Scenarios() {
     <section className="scenarios" id="scenarios" aria-labelledby="scenarios-title">
       <div className="container">
         <h2 id="scenarios-title">Сценарии</h2>
-        <p className="lead">Для продактов: интервью, созвоны с командой, демо</p>
         <Tabs
           label="Сценарии"
           defaultId="synthesis"

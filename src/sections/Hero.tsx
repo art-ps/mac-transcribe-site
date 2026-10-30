@@ -15,6 +15,7 @@ export function Hero() {
         <div className="hero-copy">
           <h1 id="hero-title">Ваши встречи — основа для исследований, решений и требований</h1>
           <p className="lead">MacTranscribe записывает и расшифровывает созвоны локально на Mac.</p>
+          <p className="lead">Для продактов: интервью, созвоны с командой, демо</p>
           <div className="hero-actions">
             <a className="download-button" href={downloadUrl} data-umami-event="download" data-umami-event-place="hero">
               <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
