@@ -26,34 +26,42 @@ const scenarios = [
 
 export function Scenarios() {
   return (
-    <section className="scenarios section-shell" id="scenarios" aria-labelledby="scenarios-title">
-      <h2 id="scenarios-title">Сценарии</h2>
-      <p className="lead">Для продактов: интервью, созвоны с командой, демо</p>
-      <Tabs
-        label="Сценарии"
-        defaultId="synthesis"
-        tabs={scenarios.map((s) => ({
-          id: s.id,
-          title: s.title,
-          content: (
-            <>
-              <dl className="scenario">
-                <dt>Что подаём на вход</dt>
-                <dd>{s.input}</dd>
-                <dt>Что помогает подготовить агент</dt>
-                <dd>{s.result}</dd>
-                <dt>Промпт из набора</dt>
-                <dd><code>{s.prompt}</code></dd>
-              </dl>
-              <a className="scenario-example" href="#example">Пример ниже</a>
-            </>
-          ),
-        }))}
-      />
-      <p className="scenarios-note">
-        Иногда самый полезный результат — список того, чего не хватает. Агент не обещает PRD
-        после каждого звонка.
-      </p>
+    <section className="scenarios" id="scenarios" aria-labelledby="scenarios-title">
+      <div className="container">
+        <h2 id="scenarios-title">Сценарии</h2>
+        <p className="lead">Для продактов: интервью, созвоны с командой, демо</p>
+        <Tabs
+          label="Сценарии"
+          defaultId="synthesis"
+          tabs={scenarios.map((s) => ({
+            id: s.id,
+            title: s.title,
+            content: (
+              <>
+                <dl className="scenario">
+                  <div>
+                    <dt>Что подаём на вход</dt>
+                    <dd>{s.input}</dd>
+                  </div>
+                  <div>
+                    <dt>Что помогает подготовить агент</dt>
+                    <dd>{s.result}</dd>
+                  </div>
+                  <div>
+                    <dt>Промпт из набора</dt>
+                    <dd><code>{s.prompt}</code></dd>
+                  </div>
+                </dl>
+                <a className="scenario-example" href="#example">Пример ниже</a>
+              </>
+            ),
+          }))}
+        />
+        <p className="scenarios-note">
+          Иногда самый полезный результат — список того, чего не хватает. Агент не обещает PRD
+          после каждого звонка.
+        </p>
+      </div>
     </section>
   );
 }
