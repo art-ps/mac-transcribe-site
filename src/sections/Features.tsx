@@ -11,7 +11,7 @@ export function Features() {
   return (
     <section className="features" id="features" aria-labelledby="features-title">
       <div className="container">
-        <h2 id="features-title">Что умеет приложение — и зачем это продакту</h2>
+        <h2 id="features-title">Что умеет приложение — и зачем это продакту</h2>
         <table className="features-table">
           <thead>
             <tr>

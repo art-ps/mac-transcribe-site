@@ -17,6 +17,16 @@ export function Kit() {
   return (
     <section className="kit" id="kit" aria-labelledby="kit-title">
       <div className="container kit-body">
+        <ul className="kit-tree">
+          <li>
+            <code className="kit-root">{treeRoot}</code>
+            <ul>
+              {treeEntries.map((entry) => (
+                <li key={entry} className={entry.endsWith("/") ? "kit-dir" : undefined}>
+                  <code>{entry}</code>
+                </li>
+              ))}
+            </ul>
         <div className="kit-copy">
           <h2 id="kit-title">Стартовый набор продакта для работы со встречами</h2>
           <ul className="kit-contents">
@@ -41,16 +51,6 @@ export function Kit() {
           </a>
           <small className="kit-size">без регистрации, {kitSizeLabel}</small>
         </div>
-        <ul className="kit-tree">
-          <li>
-            <code className="kit-root">{treeRoot}</code>
-            <ul>
-              {treeEntries.map((entry) => (
-                <li key={entry} className={entry.endsWith("/") ? "kit-dir" : undefined}>
-                  <code>{entry}</code>
-                </li>
-              ))}
-            </ul>
           </li>
         </ul>
       </div>
