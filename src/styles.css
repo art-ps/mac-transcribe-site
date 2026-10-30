@@ -9,7 +9,8 @@
 /* MacTranscribe landing: тёмная «студия записи». Палитра и шрифты бренда в tokens.css. */
 
 :root {
-  --nav-height: 80px;
+  --nav-pill-height: 56px;
+  --nav-height: calc(var(--nav-pill-height) + 2 * var(--space-sm)); /* пилюля + padding-block шапки */
   color-scheme: dark;
 }
 
@@ -29,7 +30,7 @@ html { scroll-behavior: smooth; }
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-  min-height: 56px;
+  min-height: var(--nav-pill-height);
   padding: var(--space-2xs) var(--space-2xs) var(--space-2xs) var(--space-sm);
   border: 1px solid var(--color-rule);
   border-radius: var(--radius-pill);
@@ -224,6 +225,20 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
 .map-node:nth-child(3)::after { top: 50%; right: 100%; width: var(--space-xl); height: 1px; }
 .map-node:nth-child(4)::after { content: none; }
 
+/* Наконечники: треугольник из рамок упирается остриём в следующий узел. */
+.map-node::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+}
+
+.map-node:nth-child(1)::before { top: 50%; left: calc(100% + var(--space-xl)); border-left: var(--space-xs) solid var(--color-muted); border-block-width: var(--space-2xs); transform: translate(-100%, -50%); }
+.map-node:nth-child(2)::before { top: calc(100% + var(--space-xl)); left: 50%; border-top: var(--space-xs) solid var(--color-muted); border-inline-width: var(--space-2xs); transform: translate(-50%, -100%); }
+.map-node:nth-child(3)::before { top: 50%; right: calc(100% + var(--space-xl)); border-right: var(--space-xs) solid var(--color-muted); border-block-width: var(--space-2xs); transform: translate(100%, -50%); }
+.map-node:nth-child(4)::before { content: none; }
+
 .map-node-title {
   margin-bottom: var(--space-xs);
   font-weight: 600;
@@ -240,6 +255,8 @@ button:disabled { opacity: 0.55; cursor: not-allowed; }
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
+
+.map .demo-doc blockquote { -webkit-line-clamp: 4; }
 
 .map-legend {
   list-style: none;
@@ -675,6 +692,7 @@ details > summary { cursor: pointer; font-weight: 600; }
   .map-nodes { grid-template-columns: minmax(0, 1fr); grid-template-areas: none; }
   .map-node:nth-child(n) { grid-area: auto; }
   .map-node:nth-child(-n + 3)::after { top: 100%; right: auto; left: var(--space-lg); width: 1px; height: var(--space-xl); }
+  .map-node:nth-child(-n + 3)::before { top: calc(100% + var(--space-xl)); right: auto; left: var(--space-lg); border: 0 solid transparent; border-top: var(--space-xs) solid var(--color-muted); border-inline-width: var(--space-2xs); transform: translate(-50%, -100%); }
   .final-cta { grid-template-columns: minmax(0, 1fr); }
   .final-cta-art { border-right: none; border-bottom: 1px solid var(--color-rule); }
   .example-viewer, .kit-body { grid-template-columns: 1fr; }
